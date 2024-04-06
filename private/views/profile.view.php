@@ -6,7 +6,7 @@
 
     <div class="row">
         <div class="col-sm-4 col-md-3">
-            <img src="assets/female.png" alt="avatar du genre féminin" class="d-block mx-auto rounded-circle border border-primary" style="width:100px;">
+            <img src="<?=ROOT?>/assets/female.png" alt="avatar du genre féminin" class="d-block mx-auto rounded-circle border border-primary" style="width:100px;">
             <h3 class="text-center">Jane Doe</h3>
         </div>
         <div class="col-sm-8 col-md-9 p-2 bg-light">
