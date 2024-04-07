@@ -48,15 +48,15 @@ class User extends Model
         }
 
         // vérification du genre
-        $genders = ['male', 'female', 'other', 'wont'];
+        $genders = ['Homme', 'Femme'];
         if (empty($DATA['gender']) || !in_array($DATA['gender'], $genders)) {
             $this->errors['gender'] = "Le genre n'est pas valide";
         }
 
         // vérification du rang
-        $ranks = ['student', 'reception', 'lecturer', 'admin', 'super_admin'];
+        $ranks = ['Étudiant.e', 'Réceptionniste', 'Enseignant.e', 'Administrateur.trice', 'Super Administrateur.trice'];
         if (empty($DATA['ranks']) || !in_array($DATA['ranks'], $ranks)) {
-            $this->errors['ranks'] = "Le role n'est pas valide";
+            $this->errors['ranks'] = "Le statut n'est pas valide";
         }
 
 

@@ -26,31 +26,44 @@
 
             <select class="mt-2 form-control" name="gender">
                 <option <?= get_select('gender', '') ?> value="">--Genre--</option>
-                <option <?= get_select('gender', 'male') ?> value="male">Homme</option>
-                <option <?= get_select('gender', 'female') ?> value="female">Femme</option>
-                <option <?= get_select('gender', 'other') ?> value="other">Autre</option>
-                <option <?= get_select('gender', 'wont') ?> value="wont">Ne pas renseigner</option>
+                <option <?= get_select('gender', 'Homme') ?> value="Homme">Homme</option>
+                <option <?= get_select('gender', 'Femme') ?> value="Femme">Femme</option>
             </select>
-            <select class="mt-2 form-control" name="ranks">
-                <option <?= get_select('ranks', '') ?> value="">--Sélectionner un role--</option>
-                <option <?= get_select('ranks', 'student') ?> value="student">Étudiant.e</option>
-                <option <?= get_select('ranks', 'reception') ?> value="reception">Réceptionniste</option>
-                <option <?= get_select('ranks', 'lecturer') ?> value="lecturer">Enseignant.e</option>
-                <option <?= get_select('ranks', 'admin') ?> value="admin">Administrateur.trice</option>
 
-                <?php if (Auth::getRanks() == 'super_admin') : ?>
-                    <option <?= get_select('ranks', 'super_admin') ?> value="super_admin">Super Administrateur.trice</option>
-                <?php endif; ?>
+            <?php if ($mode == 'students') : ?>
+                <input type="hidden" value="Étudiant.e" name="ranks" class="mt-2 form-control">
 
-            </select>
+            <?php else : ?>
+                <select class="mt-2 form-control" name="ranks">
+                    <option <?= get_select('ranks', '') ?> value="">--Sélectionner un statut--</option>
+                    <option <?= get_select('ranks', 'Étudiant.e') ?> value="Étudiant.e">Étudiant.e</option>
+                    <option <?= get_select('ranks', 'Réceptionniste') ?> value="Réceptionniste">Réceptionniste</option>
+                    <option <?= get_select('ranks', 'Enseignant.e') ?> value="Enseignant.e">Enseignant.e</option>
+                    <option <?= get_select('ranks', 'Administrateur.trice') ?> value="Administrateur.trice">Administrateur.trice</option>
+
+                    <?php if (Auth::getRanks() == 'super_admin') : ?>
+                        <option <?= get_select('ranks', 'Super Administrateur.trice') ?> value="Super Administrateur.trice">Super Administrateur.trice</option>
+                    <?php endif; ?>
+
+                </select>
+            <?php endif; ?>
+
 
             <input class="form-control mt-2" <?= get_var('password') ?> type="text" name="password" placeholder="Mot de passe">
             <input class="form-control mt-2" <?= get_var('password2') ?> type="text" name="password2" placeholder="Ressaisisser le mot de passe">
 
             <button class="btn btn-primary mt-4 float-end ">Enregistrer</button>
-            <a href="<?= ROOT ?>/users">
-                <button type="button" class="btn btn-danger mt-4 text-white">Annuler</button>
-            </a>
+
+            <?php if ($mode == 'students') : ?>
+                <a href="<?= ROOT ?>/students">
+                    <button type="button" class="btn btn-danger mt-4 text-white">Annuler</button>
+                </a>
+            <?php else : ?>
+                <a href="<?= ROOT ?>/users">
+                    <button type="button" class="btn btn-danger mt-4 text-white">Annuler</button>
+                </a>
+            <?php endif; ?>
+
         </div>
     </form>
 </div>

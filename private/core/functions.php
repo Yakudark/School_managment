@@ -48,10 +48,28 @@ function random_string($length)
     return $text;
 }
 
-function get_date($date, $format = 'dd MMMM, y')
+function get_date($date, $format = 'dd MMMM y, H:mm:ss')
 {
     $date = new DateTime($date, new DateTimeZone('Europe/Paris'));
     $formatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::FULL, IntlDateFormatter::NONE);
     $formatter->setPattern($format);
     return $formatter->format($date);
+}
+
+function show($data)
+{
+    echo '<pre>';
+    print_r($data);
+    echo '</pre>';
+}
+
+function get_image($image, $gender)
+{
+    if (!file_exists($image)) {
+        $image = ASSETS . '/female.png';
+        if ($gender == 'Homme') {
+            $image = ASSETS . '/male.png';
+        }
+    }
+    return $image;
 }

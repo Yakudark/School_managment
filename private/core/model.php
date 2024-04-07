@@ -30,6 +30,28 @@ class Model extends Database
         return $data;
     }
 
+    public function first($column, $value)
+    {
+        // prévient les erreurs de syntaxe SQL et les attaques d'injection SQL
+        $column = addslashes($column);
+        $query = "SELECT * FROM $this->table WHERE $column = :value";
+        $data = $this->query($query, [
+            "value" => $value
+        ]);
+        // exécute les fonctions après la sélection
+        if (is_array($data)) {
+            if (property_exists($this, 'afterSelect')) {
+                foreach ($this->afterSelect as $func) {
+                    $data = $this->$func($data);
+                };
+            }
+        }
+        if(is_array($data)){
+            $data = $data[0];
+        }
+        return $data;
+    }
+
     public function findAll()
     {
         $query = "SELECT * FROM $this->table";

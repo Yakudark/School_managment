@@ -6,7 +6,7 @@
 
         <div class="p-4 mt-5 mx-auto shadow rounded" style="width:100%; max-width: 340px;">
             <h2 class="text-center">Mon école</h2>
-            <img src="<?=ROOT?>/assets/graduate.png" alt="logo des écoles" class="d-block mx-auto" style="width:100px">
+            <img src="<?= ROOT ?>/assets/graduate.png" alt="logo des écoles" class="d-block mx-auto" style="width:100px">
             <h3>Se connecter</h3>
             <?php if (count($errors) > 0) : ?>
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">

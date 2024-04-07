@@ -11,8 +11,8 @@
                 <input type="text" class="form-control" placeholder="Rechercher" aria-label="Rechercher" aria-describedby="basic-addon1">
             </div>
         </form>
-        <a href="<?= ROOT ?>/signup">
-            <button class="btn btn-sm btn-primary"><i class="icon-fa fa fa-plus"></i>Ajouter un utilisateur</button>
+        <a href="<?= ROOT ?>/signup?mode=students">
+            <button class="btn btn-sm btn-primary"><i class="icon-fa fa fa-plus"></i>Ajouter un étudiant</button>
         </a>
     </nav>
 

@@ -8,6 +8,7 @@
 
         <table class="table table-striped table-hover">
             <tr>
+                <th></th>
                 <th>École</th>
                 <th>Créé par</th>
                 <th>Date</th>
@@ -21,6 +22,7 @@
                 <?php foreach ($rows as $row) : ?>
 
                     <tr>
+                        <td><button class="btn btn-primary btn-sm" title="Détails"><i class="fa-solid fa-info"></i></button></td>
                         <td><?= $row->school ?></td>
                         <td><?= $row->user->firstname ?> <?= $row->user->lastname ?></td>
                         <td><?= get_date($row->date) ?></td>
