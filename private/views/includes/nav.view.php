@@ -17,10 +17,12 @@
 </style>
 <nav class="navbar navbar-expand-lg bg-body-tertiary p-2">
     <div class="container-fluid">
+        
         <a class="navbar-brand" href="#">
             <img src="<?= ROOT ?>/assets/graduate.png" alt="logo des écoles" class="" style="width:35px">
             <?= Auth::getSchool_name() ?>
         </a>
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

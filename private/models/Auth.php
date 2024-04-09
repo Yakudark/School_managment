@@ -46,7 +46,7 @@ class Auth
 
     public static function switch_school($id)
     {
-        if (isset($_SESSION['USER']) && $_SESSION['USER']->ranks == 'super_admin') {
+        if (isset($_SESSION['USER']) && $_SESSION['USER']->ranks == 'Super Administrateur.trice') {
             $user = new User();
             $school = new School();
 

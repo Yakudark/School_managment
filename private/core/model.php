@@ -46,15 +46,15 @@ class Model extends Database
                 };
             }
         }
-        if(is_array($data)){
+        if (is_array($data)) {
             $data = $data[0];
         }
         return $data;
     }
 
-    public function findAll()
+    public function findAll($orderby = 'desc')
     {
-        $query = "SELECT * FROM $this->table";
+        $query = "SELECT * FROM $this->table order by id $orderby";
         $data = $this->query($query);
 
         // exécute les fonctions après la sélection
