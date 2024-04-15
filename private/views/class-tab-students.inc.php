@@ -5,7 +5,35 @@
             <input type="text" class="form-control" placeholder="Rechercher" aria-label="Rechercher" aria-describedby="basic-addon1">
         </div>
     </form>
-    <a href="<?= ROOT ?>/signup">
-        <button class="btn btn-sm btn-primary"><i class="icon-fa fa fa-plus"></i>Ajouter un.e étudiant.e</button>
-    </a>
+
+    <div>
+        <a href="<?= ROOT ?>/single_class/studentadd/<?= $row->class_id ?>?&select=true">
+            <button class="btn btn-sm btn-primary"><i class="icon-fa fa fa-plus"></i>Ajouter</button>
+        </a>
+
+        <a href="<?= ROOT ?>/single_class/studentremove/<?= $row->class_id ?>?&select=true">
+            <button class="btn btn-sm btn-primary"><i class="icon-fa fa fa-minus"></i>Supprimer</button>
+        </a>
+    </div>
+
 </nav>
+
+<div class="card-group justify-content-center">
+    <?php if (is_array($students)) : ?>
+        <?php foreach ($students as $student) : ?>
+
+            <?php
+            $row = $student->user;
+            include(views_path('user'))
+            ?>
+
+        <?php endforeach; ?>
+
+    <?php else : ?>
+        <center>
+            <hr>
+            <h4>Aucun résultat n'a été trouvé</h4>
+        </center>
+    <?php endif; ?>
+
+</div>

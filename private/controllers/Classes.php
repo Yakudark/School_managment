@@ -16,7 +16,7 @@ class Classes extends Controller
         $data = $classes->findAll();
 
         $crumbs[] = ['Tableau de bord', ''];
-        $crumbs[] = ['Disciplines', 'classes'];
+        $crumbs[] = ['Écoles', 'classes'];
 
         $this->view('classes', [
             'rows' => $data,
@@ -46,7 +46,7 @@ class Classes extends Controller
             }
         }
         $crumbs[] = ['Tableau de bord', ''];
-        $crumbs[] = ['Discipline', 'classes'];
+        $crumbs[] = ['École', 'classes'];
         $crumbs[] = ['Ajouter', 'classes/add'];
 
         $this->view(
@@ -78,7 +78,7 @@ class Classes extends Controller
         $row = $classes->where('id', $id);
 
         $crumbs[] = ['Tableau de bord', ''];
-        $crumbs[] = ['Discipline', 'classes'];
+        $crumbs[] = ['École', 'classes'];
         $crumbs[] = ['Modifier', 'classes/edit'];
 
         $this->view(
@@ -107,7 +107,7 @@ class Classes extends Controller
         $row = $classes->where('id', $id);
 
         $crumbs[] = ['Tableau de bord', ''];
-        $crumbs[] = ['Disciplines', 'classes'];
+        $crumbs[] = ['Écoles', 'classes'];
         $crumbs[] = ['Supprimer', 'classes/delete'];
 
         $this->view(

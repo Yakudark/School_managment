@@ -94,7 +94,7 @@ class User extends Model
         return $data;
     }
 
-    public function hash_password($data)
+        public function hash_password($data)
     {
         $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
         return $data;

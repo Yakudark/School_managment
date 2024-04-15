@@ -49,15 +49,23 @@
                 include(views_path('class-tab-tests'));
                 break;
 
-            case 'lecturers-add':
+            case 'lecturer-add':
                 include(views_path('class-tab-lecturers-add'));
                 break;
 
-            case 'students-add':
+            case 'lecturer-remove':
+                include(views_path('class-tab-lecturers-remove'));
+                break;
+
+            case 'student-add':
                 include(views_path('class-tab-students-add'));
                 break;
 
-            case 'tests-add':
+            case 'student-remove':
+                include(views_path('class-tab-students-remove'));
+                break;
+
+            case 'test-add':
                 include(views_path('class-tab-tests-add'));
                 break;
 
@@ -67,7 +75,7 @@
         ?>
 
     <?php else : ?>
-        <div class="alert alert-danger text-center">Cette discipline n'existe pas !</div>
+        <div class="alert alert-danger text-center">Cette école n'existe pas !</div>
     <?php endif ?>
 </div>
 

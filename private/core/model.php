@@ -11,11 +11,11 @@ class Model extends Database
         }
     }
 
-    public function where($column, $value)
+    public function where($column, $value, $orderby = 'desc')
     {
         // prévient les erreurs de syntaxe SQL et les attaques d'injection SQL
         $column = addslashes($column);
-        $query = "SELECT * FROM $this->table WHERE $column = :value";
+        $query = "SELECT * FROM $this->table WHERE $column = :value order by id $orderby";
         $data = $this->query($query, [
             "value" => $value
         ]);
@@ -30,11 +30,11 @@ class Model extends Database
         return $data;
     }
 
-    public function first($column, $value)
+    public function first($column, $value, $orderby = 'desc')
     {
         // prévient les erreurs de syntaxe SQL et les attaques d'injection SQL
         $column = addslashes($column);
-        $query = "SELECT * FROM $this->table WHERE $column = :value";
+        $query = "SELECT * FROM $this->table WHERE $column = :value order by id $orderby";
         $data = $this->query($query, [
             "value" => $value
         ]);

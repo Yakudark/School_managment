@@ -1,5 +1,5 @@
 <form method="post" class="form mx-auto" style="width:100% ;max-width:400px">
-    <h4 class="mt-2">Ajouter un.e enseignant.e</h4>
+    <h4 class="mt-2">Ajouter un.e étudiant.e</h4>
 
     <?php if (count($errors) > 0) : ?>
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -13,9 +13,9 @@
         </div>
     <?php endif; ?>
 
-    <input value="<?= get_var('name') ?>" autofocus class="form-control" type="text" name="name" placeholder="Nom de l'enseignant.e">
+    <input value="<?= get_var('name') ?>" autofocus class="form-control" type="text" name="name" placeholder="Nom de l'étudiant.e">
 
-    <a href="<?= ROOT ?>/single_class/<?= $row->class_id ?>?tab=lecturers">
+    <a href="<?= ROOT ?>/single_class/<?= $row->class_id ?>?tab=students">
         <button type='button' class="btn btn-danger mt-3">Annuler</button>
     </a>
 

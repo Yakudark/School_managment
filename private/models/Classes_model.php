@@ -28,7 +28,7 @@ class Classes_model extends Model
 
         // vérification du nom de l'école
         if (empty($DATA['class']) || !preg_match('/^[a-z A-Z0-9àáâãäåçèéêëìíîïðòóôõöùúûüýÿ]+$/', $DATA['class'])) {
-            $this->errors['class'] = "Seules les lettres et les chiffres sont autorisées pour le nom de la discipline";
+            $this->errors['class'] = "Seules les lettres et les chiffres sont autorisées pour le nom de la école";
         }
 
         if (count($this->errors) == 0) {

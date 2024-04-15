@@ -4,6 +4,7 @@
  * functions model
  */
 
+//  vérifie si une certaine clé existe
 function get_var($key, $default = '')
 {
     if (isset($_POST[$key])) {
@@ -12,9 +13,11 @@ function get_var($key, $default = '')
     return $default;
 }
 
+// aide à générer des éléments de formulaire HTML de type select
 function get_select($key, $value)
 {
     if (isset($_POST[$key])) {
+
         if ($_POST[$key] == $value) {
             return "selected";
         }

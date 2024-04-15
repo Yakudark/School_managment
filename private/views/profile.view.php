@@ -51,7 +51,7 @@
                     <a class="nav-link active" aria-current="page" href="#">Informations</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Disciplines</a>
+                    <a class="nav-link" href="#">Écoles</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Évaluations</a>
