@@ -13,7 +13,8 @@ class Classes extends Controller
         }
         $classes = new CLasses_model();
 
-        $data = $classes->findAll();
+        $school_id = Auth::getSchool_id();
+        $data = $classes->query("select * from classes where school_id = :school_id order by id desc", ['school_id' => $school_id]);
 
         $crumbs[] = ['Tableau de bord', ''];
         $crumbs[] = ['Écoles', 'classes'];

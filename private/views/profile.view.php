@@ -48,25 +48,32 @@
         <div class="container-fluid">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Informations</a>
+                    <a class="nav-link <?= $page_tab == 'info' ? 'active' : ''; ?>" href="<?= ROOT ?>/profile/<?= $row->user_id ?>">Informations</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Écoles</a>
+                    <a class="nav-link <?= $page_tab == 'classes' ? 'active' : ''; ?>" href="<?= ROOT ?>/profile/<?= $row->user_id ?>?tab=classes">Mes cours</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Évaluations</a>
+                    <a class="nav-link <?= $page_tab == 'tests' ? 'active' : ''; ?>" href="<?= ROOT ?>/profile/<?= $row->user_id ?>?tab=tests">Évaluations</a>
                 </li>
 
             </ul>
 
-            <nav class="navbar navbar-light bg-light">
-                <form class="form-inline">
-                    <div class="input-group">
-                        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
-                        <input type="text" class="form-control" placeholder="Rechercher" aria-label="Rechercher" aria-describedby="basic-addon1">
-                    </div>
-                </form>
-            </nav>
+            <?php
+            switch ($page_tab) {
+                case 'info':
+                    include(views_path('profile-tab-info'));
+                    break;
+                case 'classes':
+                    include(views_path('profile-tab-classes'));
+                    break;
+                case 'tests':
+                    include(views_path('profile-tab-tests'));
+                    break;
+                default:
+                    break;
+            }
+            ?>
 
         </div>
     <?php else : ?>

@@ -15,10 +15,11 @@
 
     }
 </style>
+
 <nav class="navbar navbar-expand-lg bg-body-tertiary p-2">
     <div class="container-fluid">
 
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="<?= ROOT ?>">
             <img src="<?= ROOT ?>/assets/graduate.png" alt="logo des écoles" class="" style="width:35px">
             <?= Auth::getSchool_name() ?>
         </a>
@@ -41,7 +42,7 @@
                     <a class="nav-link" href="<?= ROOT ?>/students">Étudiants</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= ROOT ?>/classes">Classes</a>
+                    <a class="nav-link" href="<?= ROOT ?>/classes">Cours</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= ROOT ?>/tests">Évaluations</a>
