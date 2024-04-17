@@ -4,7 +4,7 @@
 <div class="container-fluid p-4 shadow mx-auto" style="max-width: 1000px;">
     <?php $this->view('includes/crumbs', ['crumbs' => $crumbs]) ?>
 
-    <h5 class="text-center">Classes</h5>
+    <h5 class="text-center">Cours</h5>
 
     <?php include(views_path('classes')) ?>
 

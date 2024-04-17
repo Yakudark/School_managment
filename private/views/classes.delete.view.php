@@ -8,9 +8,9 @@
 
         <?php if ($row) : ?>
             <form method="post">
-                <h3>Êtes-vous sûre de vouloir supprimer cette école !? </h3>
+                <h3>Êtes-vous sûre de vouloir supprimer ce cours !? </h3>
 
-                <input disabled autofocus class="form-control" value="<?= get_var('class', $row[0]->class) ?>" type="text" name="class" placeholder="Nom de la école"><br><br>
+                <input disabled autofocus class="form-control" value="<?= get_var('class', $row[0]->class) ?>" type="text" name="class" placeholder="Nom du cours"><br><br>
 
                 <input type="hidden" name="id">
                 <input class="btn btn-danger text-white float-end" type="submit" value="Supprimer">
@@ -19,7 +19,7 @@
                 </a>
             </form>
         <?php else : ?>
-            <h3>La école n'existe pas !</h3>
+            <h3>Le cours n'existe pas !</h3>
 
             <a href="<?= ROOT ?>/classes">
                 <input class="btn btn-danger text-white" type="button" value="Retour">

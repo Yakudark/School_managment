@@ -5,7 +5,7 @@
     <?php $this->view('includes/crumbs', ['crumbs' => $crumbs]) ?>
 
     <div class="card-group justify-content-center ">
-        <h5>Écoles</h5>
+        <h5>École <?= Auth::getSchool_name() ?></h5>
 
         <table class="table table-striped table-hover">
             <tr>

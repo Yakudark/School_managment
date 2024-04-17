@@ -32,12 +32,19 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/home">Tableau de bord</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= ROOT ?>/schools">Écoles</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= ROOT ?>/users">Personnel</a>
-                </li>
+
+                <?php if (Auth::access('Super Administrateur.trice')) : ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= ROOT ?>/schools">Écoles</a>
+                    </li>
+                <?php endif; ?>
+
+                <?php if (Auth::access('Administrateur.trice')) : ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= ROOT ?>/users">Personnel</a>
+                    </li>
+                <?php endif; ?>
+
                 <li class="nav-item">
                     <a class="nav-link" href="<?= ROOT ?>/students">Étudiants</a>
                 </li>
