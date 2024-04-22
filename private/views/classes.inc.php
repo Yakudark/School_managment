@@ -6,11 +6,7 @@
             <th>Cours</th>
             <th>Créé par</th>
             <th>Date</th>
-            <th>
-                <a href="<?= ROOT ?>/classes/add">
-                    <button class="btn btn-sm btn-primary"><i class="icon-fa fa fa-plus"></i>Ajouter un cours</button>
-                </a>
-            </th>
+<th></th>
         </tr>
         <?php if (isset($rows) && $rows) : ?>
             <?php foreach ($rows as $row) : ?>

@@ -20,7 +20,7 @@ class Signup extends Controller
 
                 $_POST['date'] = date('Y-m-d H:i:s');
 
-                if (Auth::access('Administrateur.trice')) {
+                if (Auth::access('Réceptionniste')) {
 
                     if ($_POST['ranks'] == 'Super Administrateur.trice' && $_SESSION['USER']->rank != 'Super Administrateur.trice') {
                         $_POST['ranks'] = 'Administrateur.trice';
@@ -35,7 +35,7 @@ class Signup extends Controller
                 $errors = $user->errors;
             }
         }
-        if (Auth::access('Administrateur.trice')) {
+        if (Auth::access('Réceptionniste')) {
             $this->view('signup', [
                 'errors' => $errors,
                 'mode' => $mode,

@@ -7,8 +7,8 @@
     <nav class="navbar navbar-light bg-light">
         <form class="form-inline">
             <div class="input-group">
-                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
-                <input type="text" class="form-control" placeholder="Rechercher" aria-label="Rechercher" aria-describedby="basic-addon1">
+                <button class="input-group-text" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <input name="find" value="<?= isset($_GET['find']) ? $_GET['find'] : ''; ?>" type="text" class="form-control" placeholder="Rechercher" aria-label="Rechercher" aria-describedby="basic-addon1">
             </div>
         </form>
         <a href="<?= ROOT ?>/signup?mode=students">
@@ -16,9 +16,8 @@
         </a>
     </nav>
 
-
     <div class="card-group justify-content-center ">
-        
+
         <?php if ($rows) : ?>
             <?php
             foreach ($rows as $row) : ?>
@@ -35,7 +34,17 @@
             </div>
 
         <?php endif; ?>
-
     </div>
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item"><a class="page-link" href="#">Précédent</a></li>
+            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Suivant</a></li>
+        </ul>
+    </nav>
+
 </div>
 <?php $this->view('includes/footer') ?>

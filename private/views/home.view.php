@@ -40,13 +40,15 @@
             </a>
         <?php endif; ?>
 
-        <a href="<?= ROOT ?>/students" class="card col-3 shadow rounded m-4 border p-0">
-            <div class="card-header">ÉLÈVES</div>
-            <h1 class="text-center">
-                <i class="fa fa-user-graduate"></i>
-            </h1>
-            <div class="card-footer">Voir tous les élèves</div>
-        </a>
+        <?php if (Auth::access('Réceptionniste')) : ?>
+            <a href="<?= ROOT ?>/students" class="card col-3 shadow rounded m-4 border p-0">
+                <div class="card-header">ÉLÈVES</div>
+                <h1 class="text-center">
+                    <i class="fa fa-user-graduate"></i>
+                </h1>
+                <div class="card-footer">Voir tous les élèves</div>
+            </a>
+        <?php endif; ?>
 
         <a href="<?= ROOT ?>/classes" class="card col-3 shadow rounded m-4 border p-0">
             <div class="card-header">COURS</div>
@@ -64,13 +66,15 @@
             <div class="card-footer">Voir tous les tests</div>
         </a>
 
-        <a href="<?= ROOT ?>/statistics" class="card col-3 shadow rounded m-4 border p-0">
-            <div class="card-header">STATISTIQUES</div>
-            <h1 class="text-center">
-                <i class="fa fa-chart-pie"></i>
-            </h1>
-            <div class="card-footer">Voir tous les statistiques</div>
-        </a>
+        <?php if (Auth::access('Administrateur.trice')) : ?>
+            <a href="<?= ROOT ?>/statistics" class="card col-3 shadow rounded m-4 border p-0">
+                <div class="card-header">STATISTIQUES</div>
+                <h1 class="text-center">
+                    <i class="fa fa-chart-pie"></i>
+                </h1>
+                <div class="card-footer">Voir tous les statistiques</div>
+            </a>
+        <?php endif; ?>
 
         <a href="<?= ROOT ?>/profile" class="card col-3 shadow rounded m-4 border p-0">
             <div class="card-header">PROFIL</div>

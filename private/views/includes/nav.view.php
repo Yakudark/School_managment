@@ -1,16 +1,16 @@
 <style>
-    nav ul li a {
+    .navbar ul li a {
         width: 140px;
         text-align: center;
         border-left: solid thin #ddd !important;
         border-right: solid thin #ddd !important;
     }
 
-    nav ul li a:last-child {
+    .navbar ul li a:last-child {
         border-right: none !important;
     }
 
-    nav ul li a:hover {
+    .navbar ul li a:hover {
         background-color: grey;
 
     }
@@ -45,9 +45,12 @@
                     </li>
                 <?php endif; ?>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= ROOT ?>/students">Étudiants</a>
-                </li>
+                <?php if (Auth::access('Réceptionniste')) : ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= ROOT ?>/students">Étudiants</a>
+                    </li>
+                <?php endif; ?>
+
                 <li class="nav-item">
                     <a class="nav-link" href="<?= ROOT ?>/classes">Cours</a>
                 </li>
