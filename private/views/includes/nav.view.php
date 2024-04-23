@@ -33,7 +33,7 @@
                     <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/home">Tableau de bord</a>
                 </li>
 
-                <?php if (Auth::access('Super Administrateur.trice')) : ?>
+                <?php if (Auth::access('Super Admin')) : ?>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= ROOT ?>/schools">Écoles</a>
                     </li>

@@ -5,7 +5,7 @@ $image = get_image($row->image, $row->gender);
     <img src="<?= $image ?>" alt="avatar du genre de la personne" class="card-img-top rounded-circle w-75 d-block mx-auto mt-1">
     <div class="card-body">
         <center>
-            <h5 class="card-title"><?= $row->firstname ?> <?= $row->lastname ?></h5>
+            <h6 class="card-title"><?= $row->firstname ?> <?= $row->lastname ?></h6>
             <p class="card-text"><?= str_replace("_", " ", $row->ranks) ?></p>
         </center>
         <a href="<?= ROOT ?>/profile/<?= $row->user_id ?>" class="btn btn-primary">Profil</a>

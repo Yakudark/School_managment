@@ -14,10 +14,10 @@ class Students extends Controller
       $user = new User();
       $school_id = Auth::getSchool_id();
 
-      $limit = 2;
-      $page_number = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-      $page_number = $page_number < 1 ? 1 : $page_number;
-      $offset = ($page_number - 1) * $limit;
+      $limit = 10;
+      $pager = new Pager($limit);
+      $offset = $pager->offset;
+
 
       $query = "select * from users where school_id = :school_id && ranks in ('étudiant.e') order by id desc limit $limit offset $offset";
       $arr['school_id'] = $school_id;
@@ -36,6 +36,7 @@ class Students extends Controller
          $this->view('students', [
             'rows' => $data,
             'crumbs' => $crumbs,
+            'pager' => $pager
 
          ]);
       } else {

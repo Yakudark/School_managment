@@ -8,7 +8,7 @@ class Switch_school extends Controller
 {
     function index($id = '')
     {
-        if (Auth::access('Super Administrateur.trice')) {
+        if (Auth::access('Super Admin')) {
 
             Auth::switch_school($id);
         }

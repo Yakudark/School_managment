@@ -18,7 +18,7 @@ class Schools extends Controller
         $crumbs[] = ['Tableau de bord', ''];
         $crumbs[] = ['Écoles', 'schools'];
 
-        if (Auth::access('Super Administrateur.trice')) {
+        if (Auth::access('Super Admin')) {
             $this->view('schools', [
                 'rows' => $data,
                 'crumbs' => $crumbs,
@@ -35,7 +35,7 @@ class Schools extends Controller
         }
         $errors = array();
 
-        if (count($_POST) > 0 && Auth::access('Super Administrateur.trice')) {
+        if (count($_POST) > 0 && Auth::access('Super Admin')) {
             $school = new School();
             if ($school->validate($_POST)) {
 
@@ -53,7 +53,7 @@ class Schools extends Controller
         $crumbs[] = ['Écoles', 'schools'];
         $crumbs[] = ['Ajouter', 'schools/add'];
 
-        if (Auth::access('Super Administrateur.trice')) {
+        if (Auth::access('Super Admin')) {
             $this->view(
                 'schools.add',
                 [
@@ -73,7 +73,7 @@ class Schools extends Controller
         $school = new School();
         $errors = array();
 
-        if (count($_POST) > 0 && Auth::access('Super Administrateur.trice')) {
+        if (count($_POST) > 0 && Auth::access('Super Admin')) {
             if ($school->validate($_POST)) {
 
                 $school->update($id, $_POST);
@@ -89,7 +89,7 @@ class Schools extends Controller
         $crumbs[] = ['Écoles', 'schools'];
         $crumbs[] = ['Modifier', 'schools/edit'];
 
-        if (Auth::access('Super Administrateur.trice')) {
+        if (Auth::access('Super Admin')) {
             $this->view(
                 'schools.edit',
                 [
@@ -109,7 +109,7 @@ class Schools extends Controller
         }
         $school = new School();
         $errors = array();
-        if (count($_POST) > 0 && Auth::access('Super Administrateur.trice')) {
+        if (count($_POST) > 0 && Auth::access('Super Admin')) {
             $school->delete($id);
             $this->redirect('schools');
         }
@@ -119,7 +119,7 @@ class Schools extends Controller
         $crumbs[] = ['Écoles', 'schools'];
         $crumbs[] = ['Supprimer', 'schools/delete'];
 
-        if (Auth::access('Super Administrateur.trice')) {
+        if (Auth::access('Super Admin')) {
             $this->view(
                 'schools.delete',
                 [

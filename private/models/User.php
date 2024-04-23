@@ -54,7 +54,7 @@ class User extends Model
         }
 
         // vérification du rang
-        $ranks = ['Étudiant.e', 'Réceptionniste', 'Enseignant.e', 'Administrateur.trice', 'Super Administrateur.trice'];
+        $ranks = ['Étudiant.e', 'Réceptionniste', 'Enseignant.e', 'Administrateur.trice', 'Super Admin'];
         if (empty($DATA['ranks']) || !in_array($DATA['ranks'], $ranks)) {
             $this->errors['ranks'] = "Le statut n'est pas valide";
         }
@@ -94,7 +94,7 @@ class User extends Model
         return $data;
     }
 
-        public function hash_password($data)
+    public function hash_password($data)
     {
         $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
         return $data;

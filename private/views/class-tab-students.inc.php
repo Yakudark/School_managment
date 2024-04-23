@@ -29,6 +29,7 @@
 
         <?php endforeach; ?>
 
+
     <?php else : ?>
         <center>
             <hr>
@@ -37,3 +38,4 @@
     <?php endif; ?>
 
 </div>
+    <?php $pager->display(); ?>

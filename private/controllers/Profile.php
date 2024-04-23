@@ -55,4 +55,25 @@ class Profile extends Controller
          $this->view('access-denied');
       }
    }
+
+   function edit($id = '')
+   {
+      if (!Auth::logged_in()) {
+         $this->redirect('login');
+      }
+$errors = array();
+
+      $user = new User();
+      $id = trim($id == '') ? Auth::getUser_id() : $id;
+
+      $row = $user->first('user_id', $id);
+      $data['row'] = $row;
+      $data['errors'] = $errors;
+
+      if (Auth::access('Réceptionniste') || Auth::i_own_content($row)) {
+         $this->view('profile-edit', $data);
+      } else {
+         $this->view('access-denied');
+      }
+   }
 }

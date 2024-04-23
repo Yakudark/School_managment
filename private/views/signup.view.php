@@ -42,7 +42,7 @@
                     <option <?= get_select('ranks', 'Administrateur.trice') ?> value="Administrateur.trice">Administrateur.trice</option>
 
                     <?php if (Auth::getRanks() == 'super_admin') : ?>
-                        <option <?= get_select('ranks', 'Super Administrateur.trice') ?> value="Super Administrateur.trice">Super Administrateur.trice</option>
+                        <option <?= get_select('ranks', 'Super Admin') ?> value="Super Admin">Super Admin</option>
                     <?php endif; ?>
 
                 </select>

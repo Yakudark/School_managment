@@ -14,6 +14,17 @@
             <div class="col-sm-4 col-md-3">
                 <img src="<?= $image ?>" alt="avatar du genre féminin" class="d-block mx-auto rounded-circle border border-primary" style="width:100px;">
                 <h3 class="text-center"><?= esc($row->firstname) ?> <?= esc($row->lastname) ?></h3>
+                <br>
+                <?php if (Auth::access('Réceptionniste') || Auth::i_own_content($row)) : ?>
+                    <div class="text-center">
+                        <a href="<?= ROOT ?>/profile/edit/<?= $row->user_id ?>">
+                            <button class="btn btn-sm btn-success"><i class="fa-solid fa-pen mx-1"></i>Modifier</button>
+                        </a>
+                        <a href="<?= ROOT ?>/profile/delete/<?= $row->user_id ?>">
+                            <button class="btn btn-sm btn-danger"><i class="fa-solid fa-trash mx-1"></i>Supprimer</button>
+                        </a>
+                    </div>
+                <?php endif; ?>
             </div>
             <div class="col-sm-8 col-md-9 p-2 bg-light">
                 <table class="table table-hover table-striped table-bordered">
@@ -50,6 +61,7 @@
                 <li class="nav-item">
                     <a class="nav-link <?= $page_tab == 'info' ? 'active' : ''; ?>" href="<?= ROOT ?>/profile/<?= $row->user_id ?>">Informations</a>
                 </li>
+
                 <?php if (Auth::access('Enseignant.e') || Auth::i_own_content($row)) : ?>
                     <li class="nav-item">
                         <a class="nav-link <?= $page_tab == 'classes' ? 'active' : ''; ?>" href="<?= ROOT ?>/profile/<?= $row->user_id ?>?tab=classes">Mes cours</a>

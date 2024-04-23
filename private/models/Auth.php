@@ -46,7 +46,7 @@ class Auth
 
     public static function switch_school($id)
     {
-        if (isset($_SESSION['USER']) && $_SESSION['USER']->ranks == 'Super Administrateur.trice') {
+        if (isset($_SESSION['USER']) && $_SESSION['USER']->ranks == 'Super Admin') {
             $user = new User();
             $school = new School();
 
@@ -73,7 +73,7 @@ class Auth
 
         $logged_in_rank = $_SESSION['USER']->ranks;
 
-        $RANK['Super Administrateur.trice'] = ['Super Administrateur.trice', 'Administrateur.trice', 'Réceptionniste', 'Enseignant.e', 'Étudiant.e'];
+        $RANK['Super Admin'] = ['Super Admin', 'Administrateur.trice', 'Réceptionniste', 'Enseignant.e', 'Étudiant.e'];
         $RANK['Administrateur.trice'] = ['Administrateur.trice', 'Réceptionniste', 'Enseignant.e', 'Étudiant.e'];
         $RANK['Enseignant.e'] = ['Réceptionniste', 'Enseignant.e', 'Étudiant.e'];
         $RANK['Réceptionniste'] = ['Réceptionniste', 'Étudiant.e'];
@@ -103,7 +103,7 @@ class Auth
             }
         }
 
-        $allowed[] = 'Super Administrateur.trice';
+        $allowed[] = 'Super Admin';
         $allowed[] = 'Administrateur.trice';
 
         if (in_array($_SESSION['USER']->ranks, $allowed)) {

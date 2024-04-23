@@ -20,7 +20,7 @@
 <div class="container-fluid p-4 shadow mx-auto" style="max-width: 1000px;">
     <div class="row justify-content-center">
 
-        <?php if (Auth::access('Super Administrateur.trice')) : ?>
+        <?php if (Auth::access('Super Admin')) : ?>
             <a href="<?= ROOT ?>/schools" class="card col-3 shadow rounded m-4 border p-0">
                 <div class="card-header">ÉCOLES</div>
                 <h1 class="text-center">
