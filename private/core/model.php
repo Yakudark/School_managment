@@ -96,6 +96,21 @@ class Model extends Database
 
     public function update($id, $data)
     {
+        // supprime les colonnes non autorisées
+        if (property_exists($this, 'allowedColumns')) {
+            foreach ($data as $key => $column) {
+                if (!in_array($key, $this->allowedColumns)) {
+                    unset($data[$key]);
+                }
+            };
+        }
+
+        // exécute les fonctions avant l'insertion
+        if (property_exists($this, 'beforeUpdate')) {
+            foreach ($this->beforeUpdate as $func) {
+                $data = $this->$func($data);
+            };
+        }
         $str = "";
         foreach ($data as $key => $value) {
             $str .= $key . ' = :' . $key . ',';

@@ -30,7 +30,7 @@
             </a>
         <?php endif; ?>
 
-        <?php if (Auth::access('Administrateur.trice')) : ?>
+        <?php if (Auth::access('Admin')) : ?>
             <a href="<?= ROOT ?>/users" class="card col-3 shadow rounded m-4 border p-0">
                 <div class="card-header">PERSONNELS</div>
                 <h1 class="text-center">
@@ -66,7 +66,7 @@
             <div class="card-footer">Voir tous les tests</div>
         </a>
 
-        <?php if (Auth::access('Administrateur.trice')) : ?>
+        <?php if (Auth::access('Admin')) : ?>
             <a href="<?= ROOT ?>/statistics" class="card col-3 shadow rounded m-4 border p-0">
                 <div class="card-header">STATISTIQUES</div>
                 <h1 class="text-center">

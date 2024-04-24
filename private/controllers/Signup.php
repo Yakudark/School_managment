@@ -23,7 +23,7 @@ class Signup extends Controller
                 if (Auth::access('Réceptionniste')) {
 
                     if ($_POST['ranks'] == 'Super Admin' && $_SESSION['USER']->rank != 'Super Admin') {
-                        $_POST['ranks'] = 'Administrateur.trice';
+                        $_POST['ranks'] = 'Admin';
                     }
                     $user->insert($_POST);
                 }

@@ -6,7 +6,7 @@
             <th>Cours</th>
             <th>Créé par</th>
             <th>Date</th>
-<th></th>
+            <th></th>
         </tr>
         <?php if (isset($rows) && $rows) : ?>
             <?php foreach ($rows as $row) : ?>
@@ -35,7 +35,11 @@
 
             <?php endforeach; ?>
         <?php else : ?>
-            <h4>Aucun cours trouvé</h4>
+            <tr>
+                <td colspan="5">
+                    <h4 class="text-center">Aucun cours trouvé</h4>
+                </td>
+            </tr>
         <?php endif; ?>
     </table>
 </div>

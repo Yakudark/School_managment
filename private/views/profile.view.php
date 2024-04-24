@@ -15,13 +15,13 @@
                 <img src="<?= $image ?>" alt="avatar du genre féminin" class="d-block mx-auto rounded-circle border border-primary" style="width:100px;">
                 <h3 class="text-center"><?= esc($row->firstname) ?> <?= esc($row->lastname) ?></h3>
                 <br>
-                <?php if (Auth::access('Réceptionniste') || Auth::i_own_content($row)) : ?>
-                    <div class="text-center">
+                <?php if (Auth::access('Admin') || (Auth::access('Réceptionniste') && $row->ranks == 'Étudiant.e')) : ?>
+                    <div class="text-center mb-2">
                         <a href="<?= ROOT ?>/profile/edit/<?= $row->user_id ?>">
                             <button class="btn btn-sm btn-success"><i class="fa-solid fa-pen mx-1"></i>Modifier</button>
                         </a>
                         <a href="<?= ROOT ?>/profile/delete/<?= $row->user_id ?>">
-                            <button class="btn btn-sm btn-danger"><i class="fa-solid fa-trash mx-1"></i>Supprimer</button>
+                            <button class="btn btn-sm btn-danger mt-md-1"><i class="fa-solid fa-trash mx-1"></i>Supprimer</button>
                         </a>
                     </div>
                 <?php endif; ?>
@@ -101,6 +101,7 @@
             ?>
 
         </div>
+
     <?php else : ?>
         <div class="alert alert-danger text-center">Ce profil n'existe pas !</div>
     <?php endif ?>

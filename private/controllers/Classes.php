@@ -15,7 +15,7 @@ class Classes extends Controller
 
         $school_id = Auth::getSchool_id();
 
-        if (Auth::access('Administrateur.trice')) {
+        if (Auth::access('Admin')) {
             $query = "select * from classes where school_id = :school_id order by id desc";
 
             $arr['school_id'] = $school_id;

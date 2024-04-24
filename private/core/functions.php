@@ -73,6 +73,9 @@ function get_image($image, $gender)
         if ($gender == 'Homme') {
             $image = ASSETS . '/male.png';
         }
+    } else {
+        $class = new Image();
+        $image = ROOT . "/" . $class->profile_thumb($image);
     }
     return $image;
 }
@@ -84,4 +87,24 @@ function views_path($view)
     } else {
         return ("../private/views/404.view.php");
     }
+}
+function upload_image($FILES)
+{
+    if (count($FILES) > 0) {
+
+        $allowed[] = "image/jpeg";
+        $allowed[] = "image/png";
+
+        if ($FILES['image']['error'] == 0 && in_array($FILES['image']['type'], $allowed)) {
+            $folder = "uploads/";
+            if (!file_exists($folder)) {
+                mkdir($folder, 0777, true);
+            }
+            $destination = $folder . time() . "_" . $FILES['image']['name'];
+            move_uploaded_file($FILES['image']['tmp_name'], $destination);
+            return $destination;
+        }
+    }
+
+    return false;
 }

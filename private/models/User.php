@@ -15,6 +15,7 @@ class User extends Model
         'ranks',
         'gender',
         'date',
+        'image',
     ];
 
     protected $beforeInsert = [
@@ -22,8 +23,11 @@ class User extends Model
         'make_school_id',
         'hash_password'
     ];
+    protected $beforeUpdate = [
+        'hash_password'
+    ];
 
-    public function validate($DATA)
+    public function validate($DATA, $id = '')
     {
 
         $this->errors = array();
@@ -43,8 +47,27 @@ class User extends Model
         }
 
         // vérification de l'unicité de l'email
-        if ($this->where('email', $DATA['email'])) {
-            $this->errors['email'] = "L'email est déjà utilisé";
+        if (trim($id) == "") {
+            if ($this->where('email', $DATA['email'])) {
+                $this->errors['email'] = "L'email est déjà utilisé";
+            }
+        } else {
+            if ($this->query("select email from $this->table where email = :email && user_id != :id", ['email' => $DATA['email'], 'id' => $id])) {
+                $this->errors['email'] = "L'email est déjà utilisé";
+            }
+        }
+
+        // vérification des mots de passe
+        if (isset($DATA['password'])) {
+
+            if (empty($DATA['password']) || ($DATA['password'] !== $DATA['password2'])) {
+                $this->errors['password'] = "Les mots de passe ne correspondent pas";
+            }
+
+            // vérification de la longueur des mots de passe
+            if (strlen($DATA['password']) < 4) {
+                $this->errors['password'] = "Le mot de passe doit contenir au moins 4 caractères";
+            }
         }
 
         // vérification du genre
@@ -54,20 +77,9 @@ class User extends Model
         }
 
         // vérification du rang
-        $ranks = ['Étudiant.e', 'Réceptionniste', 'Enseignant.e', 'Administrateur.trice', 'Super Admin'];
+        $ranks = ['Étudiant.e', 'Réceptionniste', 'Enseignant.e', 'Admin', 'Super Admin'];
         if (empty($DATA['ranks']) || !in_array($DATA['ranks'], $ranks)) {
             $this->errors['ranks'] = "Le statut n'est pas valide";
-        }
-
-
-        // vérification des mots de passe
-        if (empty($DATA['password']) || ($DATA['password'] !== $DATA['password2'])) {
-            $this->errors['password'] = "Les mots de passe ne correspondent pas";
-        }
-
-        // vérification de la longueur des mots de passe
-        if (strlen($DATA['password']) < 4) {
-            $this->errors['password'] = "Le mot de passe doit contenir au moins 4 caractères";
         }
 
         if (count($this->errors) == 0) {
@@ -96,7 +108,9 @@ class User extends Model
 
     public function hash_password($data)
     {
-        $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+        if (isset($data['password'])) {
+            $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+        }
         return $data;
     }
 }

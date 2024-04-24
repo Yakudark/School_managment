@@ -64,7 +64,7 @@ class Auth
         return false;
     }
 
-    // if(Auth::access('Administrateur.trice')){}
+    // if(Auth::access('Admin')){}
     public static function access($ranks = 'Étudiant.e')
     {
         if (!isset($_SESSION['USER'])) {
@@ -73,8 +73,8 @@ class Auth
 
         $logged_in_rank = $_SESSION['USER']->ranks;
 
-        $RANK['Super Admin'] = ['Super Admin', 'Administrateur.trice', 'Réceptionniste', 'Enseignant.e', 'Étudiant.e'];
-        $RANK['Administrateur.trice'] = ['Administrateur.trice', 'Réceptionniste', 'Enseignant.e', 'Étudiant.e'];
+        $RANK['Super Admin'] = ['Super Admin', 'Admin', 'Réceptionniste', 'Enseignant.e', 'Étudiant.e'];
+        $RANK['Admin'] = ['Admin', 'Réceptionniste', 'Enseignant.e', 'Étudiant.e'];
         $RANK['Enseignant.e'] = ['Réceptionniste', 'Enseignant.e', 'Étudiant.e'];
         $RANK['Réceptionniste'] = ['Réceptionniste', 'Étudiant.e'];
         $RANK['Étudiant.e'] = ['Étudiant.e'];
@@ -104,7 +104,7 @@ class Auth
         }
 
         $allowed[] = 'Super Admin';
-        $allowed[] = 'Administrateur.trice';
+        $allowed[] = 'Admin';
 
         if (in_array($_SESSION['USER']->ranks, $allowed)) {
 

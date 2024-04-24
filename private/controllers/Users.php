@@ -31,7 +31,7 @@ class Users extends Controller
       $crumbs[] = ['Tableau de bord', ''];
       $crumbs[] = ['Personnel', 'users'];
 
-      if (Auth::access('Administrateur.trice')) {
+      if (Auth::access('Admin')) {
          $this->view('users', [
             'rows' => $data,
             'crumbs' => $crumbs,

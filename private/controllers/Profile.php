@@ -61,12 +61,55 @@ class Profile extends Controller
       if (!Auth::logged_in()) {
          $this->redirect('login');
       }
-$errors = array();
+      $errors = array();
 
       $user = new User();
       $id = trim($id == '') ? Auth::getUser_id() : $id;
 
+      if (count($_POST) > 0 && Auth::access('Réceptionniste')) {
+
+         //vérification si les mots de passe existent
+         if (trim($_POST['password']) == "") {
+            unset($_POST['password']);
+            unset($_POST['password2']);
+         }
+
+         if ($user->validate($_POST, $id)) {
+
+            if (count($_FILES) > 0) {
+
+               $allowed[] = "image/jpeg";
+               $allowed[] = "image/png";
+
+               if ($_FILES['image']['error'] == 0 && in_array($_FILES['image']['type'], $allowed)) {
+                  $folder = "uploads/";
+                  if (!file_exists($folder)) {
+                     mkdir($folder, 0777, true);
+                  }
+                  $destination = $folder . $_FILES['image']['name'];
+                  move_uploaded_file($_FILES['image']['tmp_name'], $destination);
+                  $_POST['image'] = $destination;
+               }
+            }
+            if ($_POST['ranks'] == 'Super Admin' && $_SESSION['USER']->rank != 'Super Admin') {
+               $_POST['ranks'] = 'Admin';
+            }
+
+            $myrow = $user->first('user_id', $id);
+            if (is_object($myrow)) {
+               $user->update($myrow->id, $_POST);
+            }
+
+            $redirect = 'profile/edit/' . $id;
+            $this->redirect($redirect);
+         } else {
+
+            $errors = $user->errors;
+         }
+      }
+
       $row = $user->first('user_id', $id);
+
       $data['row'] = $row;
       $data['errors'] = $errors;
 

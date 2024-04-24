@@ -39,7 +39,7 @@
                     </li>
                 <?php endif; ?>
 
-                <?php if (Auth::access('Administrateur.trice')) : ?>
+                <?php if (Auth::access('Admin')) : ?>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= ROOT ?>/users">Personnel</a>
                     </li>

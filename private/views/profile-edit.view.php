@@ -8,22 +8,25 @@
         <?php
         $image = get_image($row->image, $row->gender);
         ?>
+        <form method="POST" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-sm-4 col-md-3">
+                    <img src="<?= $image ?>" alt="avatar du genre féminin" class="d-block mx-auto border" style="width:100px;">
 
-        <div class="row">
-            <div class="col-sm-4 col-md-3">
-                <img src="<?= $image ?>" alt="avatar du genre féminin" class="d-block mx-auto border" style="width:100px;">
+                    <?php if (Auth::access('Réceptionniste') || Auth::i_own_content($row)) : ?>
+                        <div class="text-center">
+                            <label for="image_browser" class="btn btn-sm btn-success mt-4 mb-2"><i class="fa-solid fa-image me-1"></i>
+                                <input onchange="display_image_name(this.files[0].name)" id="image_browser" type="file" name="image" style="display:none;">
+                                Parcourir les images
+                            </label>
+                            <br>
+                            <small class="file_info text-muted"></small>
+                        </div>
+                    <?php endif; ?>
+                </div>
+                <div class=" col-sm-8 clo-md- bg-light p-2">
 
-                <?php if (Auth::access('Réceptionniste') || Auth::i_own_content($row)) : ?>
-                    <div class="text-center">
 
-                        <button class="btn btn-sm btn-success mt-4"><i class="fa-solid fa-image me-1"></i>Parcourir les images</button>
-
-                    </div>
-                <?php endif; ?>
-            </div>
-            <div class="col-sm-8 clo-md- bg-light p-2">
-
-                <form method="POST">
                     <div class="p-4 mt-5 mx-auto shadow rounded">
 
                         <?php if (count($errors) > 0) : ?>
@@ -48,13 +51,12 @@
                             <option <?= get_select('gender', 'Femme') ?> value="Femme">Femme</option>
                         </select>
 
-
                         <select class="mt-2 form-control" name="ranks">
                             <option <?= get_select('ranks', $row->ranks) ?> value="<?= $row->ranks ?>"><?= ucwords($row->ranks) ?></option>
                             <option <?= get_select('ranks', 'Étudiant.e') ?> value="Étudiant.e">Étudiant.e</option>
                             <option <?= get_select('ranks', 'Réceptionniste') ?> value="Réceptionniste">Réceptionniste</option>
                             <option <?= get_select('ranks', 'Enseignant.e') ?> value="Enseignant.e">Enseignant.e</option>
-                            <option <?= get_select('ranks', 'Administrateur.trice') ?> value="Administrateur.trice">Administrateur.trice</option>
+                            <option <?= get_select('ranks', 'Admin') ?> value="Admin">Admin</option>
 
                             <?php if (Auth::getRanks() == 'super_admin') : ?>
                                 <option <?= get_select('ranks', 'Super Admin') ?> value="Super Admin">Super Admin</option>
@@ -70,11 +72,10 @@
                         <a href="<?= ROOT ?>/profile/<?= $row->user_id ?>">
                             <button type="button" class="btn btn-sm btn-danger mt-4"><i class="fa-solid fa-rotate-left mx-1"></i>Retour au profil</button>
                         </a>
-
                     </div>
-                </form>
+                </div>
             </div>
-        </div>
+        </form>
         <br>
 
     <?php else : ?>
@@ -82,4 +83,11 @@
     <?php endif ?>
 </div>
 
+<script>
+    function display_image_name(file_name) {
+
+        document.querySelector('.file_info').innerHTML = '<b>selected file:</b><br>' + file_name;
+
+    }
+</script>
 <?php $this->view('includes/footer') ?>
