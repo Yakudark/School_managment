@@ -35,27 +35,28 @@
 
                 <?php if (Auth::access('Super Admin')) : ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= ROOT ?>/schools">Écoles</a>
+
+                        <a class="nav-link" href="<?= ROOT ?>/schools"><i class="fa fa-graduation-cap me-2"></i>Écoles</a>
                     </li>
                 <?php endif; ?>
 
                 <?php if (Auth::access('Admin')) : ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= ROOT ?>/users">Personnel</a>
+                        <a class="nav-link" href="<?= ROOT ?>/users"><i class="fa fa-chalkboard-teacher me-2"></i>Personnels</a>
                     </li>
                 <?php endif; ?>
 
                 <?php if (Auth::access('Réceptionniste')) : ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= ROOT ?>/students">Étudiants</a>
+                        <a class="nav-link" href="<?= ROOT ?>/students"><i class="fa fa-user-graduate me-2"></i>Étudiants</a>
                     </li>
                 <?php endif; ?>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= ROOT ?>/classes">Cours</a>
+                    <a class="nav-link" href="<?= ROOT ?>/classes"><i class="fa fa-university me-2"></i>Cours</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= ROOT ?>/tests">Évaluations</a>
+                    <a class="nav-link" href="<?= ROOT ?>/tests"><i class="fa fa-file-signature me-2"></i>Évaluations</a>
                 </li>
             </ul>
 
@@ -65,14 +66,21 @@
                         <?= Auth::getFirstname() ?>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="<?= ROOT ?>/profile">Profil</a></li>
+                        <li><a class="dropdown-item" href="<?= ROOT ?>/profile"><i class="fa fa-id-card me-2"></i>Profil</a></li>
                         <li><a class="dropdown-item" href="<?= ROOT ?>/home">Tableau de bord</a></li>
                         <div class="dropdown-divider"></div>
-                        <li><a class="dropdown-item" href="<?= ROOT ?>/logout">Se déconnecter</a></li>
+                        <li><a class="dropdown-item" href="<?= ROOT ?>/logout"><i class="fa fa-sign-out-alt me-2"></i>Se déconnecter</a></li>
                     </ul>
                 </li>
             </ul>
 
+        </div>
+        <div class="d-flex align-items-center m-2">
+            <i class="fa-solid fa-sun"></i>
+            <div class="form-check form-switch mx-2">
+                <input class="form-check-input p-2" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked onclick="myFunction()" />
+                <i class="fa-solid fa-moon"></i>
+            </div>
         </div>
     </div>
 </nav>

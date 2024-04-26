@@ -41,7 +41,7 @@
                     <option <?= get_select('ranks', 'Enseignant.e') ?> value="Enseignant.e">Enseignant.e</option>
                     <option <?= get_select('ranks', 'Admin') ?> value="Admin">Admin</option>
 
-                    <?php if (Auth::getRanks() == 'super_admin') : ?>
+                    <?php if (Auth::getRanks() == 'Super Admin') : ?>
                         <option <?= get_select('ranks', 'Super Admin') ?> value="Super Admin">Super Admin</option>
                     <?php endif; ?>
 

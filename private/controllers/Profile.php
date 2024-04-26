@@ -8,7 +8,6 @@ class Profile extends Controller
 
    function index($id = '')
    {
-
       if (!Auth::logged_in()) {
          $this->redirect('login');
       }
@@ -18,8 +17,15 @@ class Profile extends Controller
 
       $row = $user->first('user_id', $id);
 
-      $crumbs[] = ['Dashboard', ''];
-      $crumbs[] = ['profile', 'profile'];
+      $crumbs[] = ['Tableau de bord', ROOT . '/home'];
+      // $crumbs[] = ['profile', '/profile'];
+      if ($row) {
+         if ($row->ranks == 'Étudiant.e') {
+            $crumbs[] = ['profile', ROOT . '/students'];
+         } else {
+            $crumbs[] = ['profile', ROOT . '/users'];
+         }
+      }
       if ($row) {
          $crumbs[] = [$row->firstname, 'profile'];
       }

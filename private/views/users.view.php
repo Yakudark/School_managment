@@ -4,15 +4,15 @@
 <div class="container-fluid p-4 shadow mx-auto" style="max-width: 1000px;">
     <?php $this->view('includes/crumbs', ['crumbs' => $crumbs]) ?>
 
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar navbar-light">
         <form class="form-inline">
-            <div class="input-group">
+            <div class="input-group ms-2">
                 <button class="input-group-text" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></button>
                 <input name="find" value="<?= isset($_GET['find']) ? $_GET['find'] : ''; ?>" type="text" class="form-control" placeholder="Rechercher" aria-label="Rechercher" aria-describedby="basic-addon1">
             </div>
         </form>
         <a href="<?= ROOT ?>/signup">
-            <button class="btn btn-sm btn-primary"><i class="icon-fa fa fa-plus"></i>Ajouter un utilisateur</button>
+            <button class="btn btn-sm btn-primary me-2"><i class="icon-fa fa fa-plus"></i>Ajouter un utilisateur</button>
         </a>
     </nav>
 

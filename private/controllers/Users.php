@@ -28,7 +28,7 @@ class Users extends Controller
       }
       $data = $user->query($query, $arr);
 
-      $crumbs[] = ['Tableau de bord', ''];
+      $crumbs[] = ['Tableau de bord', ROOT . '/home'];
       $crumbs[] = ['Personnel', 'users'];
 
       if (Auth::access('Admin')) {

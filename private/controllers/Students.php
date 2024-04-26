@@ -29,8 +29,8 @@ class Students extends Controller
       }
       $data = $user->query($query, $arr);
 
-      $crumbs[] = ['Tableau de bord', ''];
-      $crumbs[] = ['Étudiants', 'students'];
+      $crumbs[] = ['Tableau de bord', ROOT . '/home'];
+      $crumbs[] = ['Étudiants', ROOT . '/students'];
 
       if (Auth::access('Réceptionniste')) {
          $this->view('students', [

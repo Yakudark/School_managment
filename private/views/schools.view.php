@@ -23,15 +23,15 @@
                 <?php foreach ($rows as $row) : ?>
 
                     <tr>
-                        <td><button class="btn btn-primary btn-sm" title="Détails"><i class="fa-solid fa-info"></i></button></td>
+                        <td></td>
                         <td><?= $row->school ?></td>
                         <td><?= $row->user->firstname ?> <?= $row->user->lastname ?></td>
                         <td><?= get_date($row->date) ?></td>
                         <td>
-                            <a href="<?= ROOT ?>/schools/edit/<?= $row->id ?>" title="Modifier l'école">
+                            <a class="link-offset-2 link-underline link-underline-opacity-0" href="<?= ROOT ?>/schools/edit/<?= $row->id ?>" title="Modifier l'école">
                                 <button class="btn btn-sm btn-info text-white"><i class="fa fa-edit"></i></button>
                             </a>
-                            <a href="<?= ROOT ?>/schools/delete/<?= $row->id ?>" title="Supprimer l'école">
+                            <a class="link-offset-2 link-underline link-underline-opacity-0" href="<?= ROOT ?>/schools/delete/<?= $row->id ?>" title="Supprimer l'école">
                                 <button class="btn btn-sm btn-danger"><i class="fa fa-trash-alt"></i></button>
                             </a>
 

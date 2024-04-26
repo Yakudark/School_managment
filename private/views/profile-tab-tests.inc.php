@@ -1,5 +1,5 @@
-<h3>Tests</h3>
-<nav class="navbar navbar-light bg-light">
+<h3 class="text-center mt-4">Tests</h3>
+<nav class="navbar navbar-light">
     <form class="form-inline">
         <div class="input-group">
             <div class="input-group-prepend">

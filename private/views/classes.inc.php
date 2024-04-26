@@ -23,10 +23,10 @@
                     <td>
 
                         <?php if (Auth::access('Enseignant.e')) : ?>
-                            <a href="<?= ROOT ?>/classes/edit/<?= $row->id ?>" title="Modifier le cours">
+                            <a class="link-offset-2 link-underline link-underline-opacity-0" href="<?= ROOT ?>/classes/edit/<?= $row->id ?>" title="Modifier le cours">
                                 <button class="btn btn-sm btn-info text-white"><i class="fa fa-edit"></i></button>
                             </a>
-                            <a href="<?= ROOT ?>/classes/delete/<?= $row->id ?>" title="Supprimer le cours">
+                            <a class="link-offset-2 link-underline link-underline-opacity-0" href="<?= ROOT ?>/classes/delete/<?= $row->id ?>" title="Supprimer le cours">
                                 <button class="btn btn-sm btn-danger"><i class="fa fa-trash-alt"></i></button>
                             </a>
                         <?php endif; ?>

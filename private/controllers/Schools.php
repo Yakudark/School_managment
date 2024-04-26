@@ -15,7 +15,7 @@ class Schools extends Controller
 
         $data = $school->findAll();
 
-        $crumbs[] = ['Tableau de bord', ''];
+        $crumbs[] = ['Tableau de bord', ROOT . '/home'];
         $crumbs[] = ['Écoles', 'schools'];
 
         if (Auth::access('Super Admin')) {
@@ -49,7 +49,7 @@ class Schools extends Controller
                 $errors = $school->errors;
             }
         }
-        $crumbs[] = ['Tableau de bord', ''];
+        $crumbs[] = ['Tableau de bord', ROOT . '/home'];
         $crumbs[] = ['Écoles', 'schools'];
         $crumbs[] = ['Ajouter', 'schools/add'];
 
@@ -85,7 +85,7 @@ class Schools extends Controller
         }
         $row = $school->where('id', $id);
 
-        $crumbs[] = ['Tableau de bord', ''];
+        $crumbs[] = ['Tableau de bord', ROOT . '/home'];
         $crumbs[] = ['Écoles', 'schools'];
         $crumbs[] = ['Modifier', 'schools/edit'];
 
@@ -115,7 +115,7 @@ class Schools extends Controller
         }
         $row = $school->where('id', $id);
 
-        $crumbs[] = ['Tableau de bord', ''];
+        $crumbs[] = ['Tableau de bord', ROOT . '/home'];
         $crumbs[] = ['Écoles', 'schools'];
         $crumbs[] = ['Supprimer', 'schools/delete'];
 

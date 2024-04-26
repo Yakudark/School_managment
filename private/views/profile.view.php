@@ -17,16 +17,16 @@
                 <br>
                 <?php if (Auth::access('Admin') || (Auth::access('Réceptionniste') && $row->ranks == 'Étudiant.e')) : ?>
                     <div class="text-center mb-2">
-                        <a href="<?= ROOT ?>/profile/edit/<?= $row->user_id ?>">
+                        <a class="link-offset-2 link-underline link-underline-opacity-0" href="<?= ROOT ?>/profile/edit/<?= $row->user_id ?>">
                             <button class="btn btn-sm btn-success"><i class="fa-solid fa-pen mx-1"></i>Modifier</button>
                         </a>
-                        <a href="<?= ROOT ?>/profile/delete/<?= $row->user_id ?>">
+                        <a class="link-offset-2 link-underline link-underline-opacity-0" href="<?= ROOT ?>/profile/delete/<?= $row->user_id ?>">
                             <button class="btn btn-sm btn-danger mt-md-1"><i class="fa-solid fa-trash mx-1"></i>Supprimer</button>
                         </a>
                     </div>
                 <?php endif; ?>
             </div>
-            <div class="col-sm-8 col-md-9 p-2 bg-light">
+            <div class="col-sm-8 col-md-9 p-2">
                 <table class="table table-hover table-striped table-bordered">
                     <tr>
                         <th>Nom: </th>

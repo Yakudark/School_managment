@@ -24,9 +24,7 @@
                         </div>
                     <?php endif; ?>
                 </div>
-                <div class=" col-sm-8 clo-md- bg-light p-2">
-
-
+                <div class=" col-sm-8 p-2">
                     <div class="p-4 mt-5 mx-auto shadow rounded">
 
                         <?php if (count($errors) > 0) : ?>
@@ -58,7 +56,7 @@
                             <option <?= get_select('ranks', 'Enseignant.e') ?> value="Enseignant.e">Enseignant.e</option>
                             <option <?= get_select('ranks', 'Admin') ?> value="Admin">Admin</option>
 
-                            <?php if (Auth::getRanks() == 'super_admin') : ?>
+                            <?php if (Auth::getRanks() == 'Super Admin') : ?>
                                 <option <?= get_select('ranks', 'Super Admin') ?> value="Super Admin">Super Admin</option>
                             <?php endif; ?>
 

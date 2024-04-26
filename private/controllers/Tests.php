@@ -1,38 +1,38 @@
 <?php
 
 /**
- * classes controller
+ * tests controller
  */
 
-class Classes extends Controller
+class Tests extends Controller
 {
     public function index()
     {
         if (!Auth::logged_in()) {
             $this->redirect('login');
         }
-        $classes = new CLasses_model();
+        $tests = new CLasses_model();
 
         $school_id = Auth::getSchool_id();
 
         if (Auth::access('Admin')) {
-            $query = "select * from classes where school_id = :school_id order by id desc";
+            $query = "select * from tests where school_id = :school_id order by id desc";
 
             $arr['school_id'] = $school_id;
 
             if (isset($_GET['find'])) {
                 $find = '%' . $_GET['find'] . '%';
-                $query = "select * from classes where school_id = :school_id && (class like :find) order by id desc";
+                $query = "select * from tests where school_id = :school_id && (test like :find) order by id desc";
                 $arr['find'] = $find;
             }
 
-            $data = $classes->query($query, $arr);
+            $data = $tests->query($query, $arr);
         } else {
 
-            $class = new Classes_model();
-            $mytable = "class_students";
+            $test = new Tests_model();
+            $mytable = "test_students";
             if (Auth::getRank() == "Enseignant.e") {
-                $mytable = "class_lecturers";
+                $mytable = "test_lecturers";
             }
 
             $query = "select * from $mytable where user_id = :user_id && disabled = 0";
@@ -41,24 +41,24 @@ class Classes extends Controller
 
             if (isset($_GET['find'])) {
                 $find = '%' . $_GET['find'] . '%';
-                $query = "select classes.class, {$mytable}.* from $mytable join classes on classes.class_id = {$mytable}.class_id where {$mytable}.user_id = :user_id && {$mytable}.disabled = 0 && classes.class like :find";
+                $query = "select tests.test, {$mytable}.* from $mytable join tests on tests.test_id = {$mytable}.test_id where {$mytable}.user_id = :user_id && {$mytable}.disabled = 0 && tests.test like :find";
                 $arr['find'] = $find;
             }
 
-            $arr['stud_classes'] = $class->query($query, $arr);
+            $arr['stud_tests'] = $test->query($query, $arr);
 
             $data = array();
-            if ($arr['stud_classes']) {
-                foreach ($arr['stud_classes'] as $key => $arow) {
-                    $data[] = $class->first('class_id', $arow->class_id);
+            if ($arr['stud_tests']) {
+                foreach ($arr['stud_tests'] as $key => $arow) {
+                    $data[] = $test->first('test_id', $arow->test_id);
                 }
             }
         }
 
         $crumbs[] = ['Tableau de bord', ROOT . '/home'];
-        $crumbs[] = ['Cours', 'classes'];
+        $crumbs[] = ['Évaluations', 'tests'];
 
-        $this->view('classes', [
+        $this->view('tests', [
             'crumbs' => $crumbs,
             'rows' => $data,
         ]);
@@ -71,25 +71,25 @@ class Classes extends Controller
         $errors = array();
 
         if (count($_POST) > 0) {
-            $classes = new CLasses_model();
-            if ($classes->validate($_POST)) {
+            $tests = new CLasses_model();
+            if ($tests->validate($_POST)) {
 
 
                 $_POST['date'] = date('Y-m-d H:i:s');
 
-                $classes->insert($_POST);
-                $this->redirect('classes');
+                $tests->insert($_POST);
+                $this->redirect('tests');
             } else {
 
-                $errors = $classes->errors;
+                $errors = $tests->errors;
             }
         }
         $crumbs[] = ['Tableau de bord', ROOT . '/home'];
-        $crumbs[] = ['Cours', 'classes'];
-        $crumbs[] = ['Ajouter', 'classes/add'];
+        $crumbs[] = ['Évaluations', 'tests'];
+        $crumbs[] = ['Ajouter', 'tests/add'];
 
         $this->view(
-            'classes.add',
+            'tests.add',
             [
                 'errors' => $errors,
                 'crumbs' => $crumbs,
@@ -101,29 +101,29 @@ class Classes extends Controller
         if (!Auth::logged_in()) {
             $this->redirect('login');
         }
-        $classes = new CLasses_model();
+        $tests = new CLasses_model();
 
         $errors = array();
         if (count($_POST) > 0 && Auth::access('Enseignant.e') && Auth::i_own_content($row)) {
 
-            if ($classes->validate($_POST)) {
+            if ($tests->validate($_POST)) {
 
-                $classes->update($id, $_POST);
-                $this->redirect('classes');
+                $tests->update($id, $_POST);
+                $this->redirect('tests');
             } else {
 
-                $errors = $classes->errors;
+                $errors = $tests->errors;
             }
         }
-        $row = $classes->where('id', $id);
+        $row = $tests->where('id', $id);
 
         $crumbs[] = ['Tableau de bord', ROOT . '/home'];
-        $crumbs[] = ['Cours', 'classes'];
-        $crumbs[] = ['Modifier', 'classes/edit'];
+        $crumbs[] = ['Évaluations', 'tests'];
+        $crumbs[] = ['Modifier', 'tests/edit'];
 
         if (Auth::access('Enseignant.e') && Auth::i_own_content($row)) {
             $this->view(
-                'classes.edit',
+                'tests.edit',
                 [
                     'row' => $row,
                     'errors' => $errors,
@@ -142,22 +142,22 @@ class Classes extends Controller
         }
 
 
-        $classes = new Classes_model();
+        $tests = new Tests_model();
         $errors = array();
 
         if (count($_POST) > 0 && Auth::access('Enseignant.e') && Auth::i_own_content($row)) {
-            $classes->delete($id);
-            $this->redirect('classes');
+            $tests->delete($id);
+            $this->redirect('tests');
         }
-        $row = $classes->where('id', $id);
+        $row = $tests->where('id', $id);
 
         $crumbs[] = ['Tableau de bord', ROOT . '/home'];
-        $crumbs[] = ['Cours', 'classes'];
-        $crumbs[] = ['Supprimer', 'classes/delete'];
+        $crumbs[] = ['Évaluations', 'tests'];
+        $crumbs[] = ['Supprimer', 'tests/delete'];
 
         if (Auth::access('Enseignant.e') && Auth::i_own_content($row)) {
             $this->view(
-                'classes.delete',
+                'tests.delete',
                 [
                     'row' => $row,
                     'crumbs' => $crumbs,

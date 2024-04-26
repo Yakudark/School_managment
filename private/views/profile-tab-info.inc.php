@@ -1,1 +1,1 @@
-<h3>Informations</h3>
+<h3 class="text-center mt-4">Informations</h3>
