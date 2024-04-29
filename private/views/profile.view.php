@@ -64,7 +64,7 @@
 
                 <?php if (Auth::access('Enseignant.e') || Auth::i_own_content($row)) : ?>
                     <li class="nav-item">
-                        <a class="nav-link <?= $page_tab == 'classes' ? 'active' : ''; ?>" href="<?= ROOT ?>/profile/<?= $row->user_id ?>?tab=classes">Mes cours</a>
+                        <a class="nav-link <?= $page_tab == 'classes' ? 'active' : ''; ?>" href="<?= ROOT ?>/profile/<?= $row->user_id ?>?tab=classes">Mes discipline</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?= $page_tab == 'tests' ? 'active' : ''; ?>" href="<?= ROOT ?>/profile/<?= $row->user_id ?>?tab=tests">Évaluations</a>

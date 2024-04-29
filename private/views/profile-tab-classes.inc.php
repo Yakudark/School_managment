@@ -1,4 +1,4 @@
-<h3 class="text-center mt-4">Mes cours</h3>
+<h3 class="text-center mt-4">Mes discipline</h3>
 
 <nav class="navbar navbar-light">
     <form class="form-inline">
@@ -14,4 +14,3 @@
 
 <?php $rows = $student_classes; ?>
 <?php include(views_path('classes')) ?>
-

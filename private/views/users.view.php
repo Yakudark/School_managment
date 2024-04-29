@@ -12,7 +12,7 @@
             </div>
         </form>
         <a href="<?= ROOT ?>/signup">
-            <button class="btn btn-sm btn-primary me-2"><i class="icon-fa fa fa-plus"></i>Ajouter un utilisateur</button>
+            <button class="btn btn-sm btn-success me-2"><i class="icon-fa fa fa-plus"></i>Ajouter un utilisateur</button>
         </a>
     </nav>
 

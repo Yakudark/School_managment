@@ -16,6 +16,10 @@
         .icon-fa {
             margin-right: 4px;
         }
+
+        a {
+            text-decoration: none;
+        }
     </style>
 
     <div style="min-width:350px;">
@@ -26,18 +30,6 @@
                 var theme = element.dataset.bsTheme == "light" ? "dark" : "light";
                 element.dataset.bsTheme = theme;
                 localStorage.setItem('theme', theme);
-
-                // Changer la classe des boutons en fonction du thème
-                var buttons = document.querySelectorAll('.btn-primary, .btn-success');
-                buttons.forEach(function(button) {
-                    if (theme == 'dark') {
-                        button.classList.remove('btn-primary');
-                        button.classList.add('btn-success');
-                    } else {
-                        button.classList.remove('btn-success');
-                        button.classList.add('btn-primary');
-                    }
-                });
             }
 
             // Au chargement de la page, appliquer le thème stocké
@@ -46,17 +38,6 @@
                 if (theme) {
                     document.body.dataset.bsTheme = theme;
 
-                    // Changer la classe des boutons en fonction du thème
-                    var buttons = document.querySelectorAll('.btn-primary, .btn-success');
-                    buttons.forEach(function(button) {
-                        if (theme == 'dark') {
-                            button.classList.remove('btn-primary');
-                            button.classList.add('btn-success');
-                        } else {
-                            button.classList.remove('btn-success');
-                            button.classList.add('btn-primary');
-                        }
-                    });
                 }
             }
         </script>

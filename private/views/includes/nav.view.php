@@ -53,7 +53,7 @@
                 <?php endif; ?>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= ROOT ?>/classes"><i class="fa fa-university me-2"></i>Cours</a>
+                    <a class="nav-link" href="<?= ROOT ?>/classes"><i class="fa fa-university me-2"></i>Discipline</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= ROOT ?>/tests"><i class="fa fa-file-signature me-2"></i>Évaluations</a>

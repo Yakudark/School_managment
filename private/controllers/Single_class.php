@@ -17,7 +17,7 @@ class Single_class extends Controller
       $row = $classes->first('class_id', $id);
 
       $crumbs[] = ['Tableau de bord', ROOT . '/home'];
-      $crumbs[] = ['Cours', ROOT . '/classes'];
+      $crumbs[] = ['Discipline', ROOT . '/classes'];
 
       if ($row) {
          $crumbs[] = [$row->class, ''];
@@ -72,7 +72,7 @@ class Single_class extends Controller
       $row = $classes->first('class_id', $id);
 
       $crumbs[] = ['Tableau de bord', ROOT . '/home'];
-      $crumbs[] = ['Cours', ROOT . '/classes'];
+      $crumbs[] = ['Discipline', ROOT . '/classes'];
 
       if ($row) {
          $crumbs[] = [$row->class, ''];
@@ -152,7 +152,7 @@ class Single_class extends Controller
       $row = $classes->first('class_id', $id);
 
       $crumbs[] = ['Tableau de bord', ROOT . '/home'];
-      $crumbs[] = ['Cours', ROOT . '/classes'];
+      $crumbs[] = ['Discipline', ROOT . '/classes'];
 
       if ($row) {
          $crumbs[] = [$row->class, ''];
@@ -219,7 +219,7 @@ class Single_class extends Controller
       $row = $classes->first('class_id', $id);
 
       $crumbs[] = ['Tableau de bord', ROOT . '/home'];
-      $crumbs[] = ['Cours', ROOT . '/classes'];
+      $crumbs[] = ['Discipline', ROOT . '/classes'];
 
       if ($row) {
          $crumbs[] = [$row->class, ''];
@@ -299,7 +299,7 @@ class Single_class extends Controller
       $row = $classes->first('class_id', $id);
 
       $crumbs[] = ['Tableau de bord', ROOT . '/home'];
-      $crumbs[] = ['Cours', ROOT . '/classes'];
+      $crumbs[] = ['Discipline', ROOT . '/classes'];
 
       if ($row) {
          $crumbs[] = [$row->class, ''];

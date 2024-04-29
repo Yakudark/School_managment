@@ -56,7 +56,7 @@ class Classes extends Controller
         }
 
         $crumbs[] = ['Tableau de bord', ROOT . '/home'];
-        $crumbs[] = ['Cours', 'classes'];
+        $crumbs[] = ['Discipline', 'classes'];
 
         $this->view('classes', [
             'crumbs' => $crumbs,
@@ -85,7 +85,7 @@ class Classes extends Controller
             }
         }
         $crumbs[] = ['Tableau de bord', ROOT . '/home'];
-        $crumbs[] = ['Cours', 'classes'];
+        $crumbs[] = ['Discipline', 'classes'];
         $crumbs[] = ['Ajouter', 'classes/add'];
 
         $this->view(
@@ -118,7 +118,7 @@ class Classes extends Controller
         $row = $classes->where('id', $id);
 
         $crumbs[] = ['Tableau de bord', ROOT . '/home'];
-        $crumbs[] = ['Cours', 'classes'];
+        $crumbs[] = ['Discipline', 'classes'];
         $crumbs[] = ['Modifier', 'classes/edit'];
 
         if (Auth::access('Enseignant.e') && Auth::i_own_content($row)) {
@@ -152,7 +152,7 @@ class Classes extends Controller
         $row = $classes->where('id', $id);
 
         $crumbs[] = ['Tableau de bord', ROOT . '/home'];
-        $crumbs[] = ['Cours', 'classes'];
+        $crumbs[] = ['Discipline', 'classes'];
         $crumbs[] = ['Supprimer', 'classes/delete'];
 
         if (Auth::access('Enseignant.e') && Auth::i_own_content($row)) {
